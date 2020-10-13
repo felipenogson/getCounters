@@ -16,5 +16,7 @@ def summoner():
             "line" : request.form['line']}
         user_champs = grab_champs(user['summoner'])
         most_used = grab_most_used(user_champs, 10)
-        info = find_counters(user['enemy'], user['line'], most_used)
-        return render_template('index.html', user=user, info=info)
+        info, top_three, worst_three  = find_counters(user['enemy'], user['line'], most_used)
+        print(top_three)
+    
+        return render_template('index.html', user=user, info=info, top_three=top_three, worst_three=worst_three)
