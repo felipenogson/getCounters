@@ -32,6 +32,7 @@ def grab_most_used(user_champs, game_count):
 
 def find_counters(champ, lane, my_champs):
     counters = {}
+    my_counter_champs = {}
 
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
     r = requests.get('https://www.op.gg/champion/'+champ+'/statistics/'+lane+'/matchup', headers=headers)
@@ -42,13 +43,10 @@ def find_counters(champ, lane, my_champs):
     print("----Matchup-"+champ+"-"+lane+"----")
     for champion in my_champs:
         if champion.lower() in counters:
-            print(champion + ': '+ str(counters[champion])+ "% winrate")
-        else:
-            #print(champion +": No Data")
-            pass
-    counters = {k: v for k, v in sorted(counters.items(), key=lambda item: item[1], reverse=True)}
+            my_counter_champs[champion] = counters[champion]
+    my_counter_champs = {k: v for k, v in sorted(my_counter_champs.items(), key=lambda x: x[1], reverse=True)}
 
-    return counters
+    return my_counter_champs
 
 def run_counter(my_champs):
     #my_champs = ['akali','yasuo','vladimir','anivia','fizz', 'jax', 'urgot', 'maokai', 'tarric', 'maokai', 'pyke', 'yasuo', 'ezreal', 'vayne', 'gragas']
