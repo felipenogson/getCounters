@@ -17,8 +17,6 @@ def summoner():
         user_champs = grab_champs(user['summoner'])
         most_used = grab_most_used(user_champs, 10)
         info, top_three, worst_three  = find_counters(user['enemy'], user['line'], most_used)
-        print(top_three)
-    
         return render_template('index.html', user=user, info=info, top_three=top_three, worst_three=worst_three)
-    else:
-        return redirect(url_for(index))
+    elif request.method == 'GET':
+        return '<a href="http://aws.syslinux.xyz:5000">"http://aws.syslinux.xyz:5000"</a>'
