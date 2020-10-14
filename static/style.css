@@ -63,7 +63,7 @@ li {
 li:hover{
     background-color: #8D99AE;
     color: white;
-
+    cursor: pointer;
 }
 
 .champ {
