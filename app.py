@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from getCounters import *
 
 app = Flask(__name__)
@@ -20,3 +20,4 @@ def summoner():
         print(top_three)
     
         return render_template('index.html', user=user, info=info, top_three=top_three, worst_three=worst_three)
+    return redirect(url_for(index))

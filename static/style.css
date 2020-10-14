@@ -3,6 +3,9 @@ body {
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(43, 45, 66, 1) 49%);
     color: #dfdfdf;
 }
+.container{
+    min-height: 100vh;
+}
 
 .btn {
     margin: 10px;
