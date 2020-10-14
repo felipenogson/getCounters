@@ -19,4 +19,5 @@ def summoner():
         info, top_three, worst_three  = find_counters(user['enemy'], user['line'], most_used)
         print(top_three)
     
-        return render_template('index.html', user=user, info=info, top_three=top_three, worst_three=worst_three)
+        #return render_template('index.html', user=user, info=info, top_three=top_three, worst_three=worst_three)
+        return json()

@@ -6,7 +6,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔</text></svg>">
 
 
   <!-- Bootstrap CSS -->
@@ -15,24 +16,27 @@
 
   <!-- My css -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+  <link rel="stylesheet" href="../static/style.css">
 </head>
 
 <body>
   <div class="container">
     <div class="row">
-      <div class="jumbotron">
-        <h1 class="display-3">Get Counters ⚔</h1>
+      <div class="jumbotron titlebox">
+        <h1 class="display-3 logo">Get Counters ⚔</h1>
         <form action="summoner" method="post">
           <div class="form-row">
             <div class="col">
-              <input type="text" class="form-control form-control-lg" name="summoner" placeholder="Hero">
+              <input type="text" class="form-control form-control-lg" name="summoner" placeholder="Summoner">
             </div>
             <div class="col">
-              <input type="text" class="form-control form-control-lg" name="enemy" placeholder="Enemy">
+              <input type="text" class="form-control form-control-lg" name="enemy" id="champion" placeholder="Enemy Champion" autocomplete="off">
+              <ul class="suggestions" id="suggestions">
+              </ul>
             </div>
             <div class="col">
               <div class="form-group">
-                <select class="form-control form-control-lg" name="line" id="line" placeholder="Line">
+                <select class="form-control form-control-lg" name="line" id="line" placeholder="Lane">
                   <option>top</option>
                   <option>mid</option>
                   <option>bot</option>
@@ -43,8 +47,8 @@
             </div>
           </div>
           <div class="form-row">
-            <div class="col">
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary btn-lg btn-search">🔎 Search</button>
             </div>
           </div>
         </form>
@@ -54,71 +58,65 @@
     {% if info %}
     <div class="row">
       <div class="col">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">{{user['summoner']}}</li>
-            <li class="breadcrumb-item">{{user['enemy']}}</li>
-            <li class="breadcrumb-item" >{{user['line']}}</li>
-          </ol>
-        </nav>
+
       </div>
     </div>
     <div class="row">
       <div class="col">
         <h3>🏋️‍♀️Your Champs</h3>
-        <table class="table table-striped table-inverse table-responsive">
+        <table class="table table-bordered table-dark table-striped table-inverse">
           <thead class="thead-inverse">
             <tr>
               <th>Champ</th>
               <th>Winrate</th>
             </tr>
-            </thead>
-            <tbody>
-              {% for champ in info %}
-              <tr>
-                <td>{{champ}}</td>
-                <td>{{info[champ]}}%</td>
-              </tr>
-              {% endfor %}
-            </tbody>
+          </thead>
+          <tbody>
+            {% for champ in info %}
+            <tr>
+              <td>{{champ}}</td>
+              <td>{{info[champ]}}%</td>
+            </tr>
+            {% endfor %}
+          </tbody>
         </table>
       </div>
       <div class="col">
         <h3>😭 Worst Three </h3>
-        <table class="table table-striped table-inverse table-responsive">
+        <table class="table table-bordered table-dark table-striped table-inverse">
           <thead class="thead-inverse">
             <tr>
               <th>Champ</th>
               <th>Winrate</th>
             </tr>
-            </thead>
-            <tbody>
-              {% for champ in top_three %}
-              <tr>
-                <td>{{champ}}</td>
-                <td>{{top_three[champ]}}%</td>
-              </tr>
-              {% endfor %}
-            </tbody>
+          </thead>
+          <tbody>
+            {% for champ in top_three %}
+            <tr>
+              <td>{{champ}}</td>
+              <td>{{top_three[champ]}}%</td>
+            </tr>
+            {% endfor %}
+          </tbody>
         </table>
       </div>
       <div class="col">
         <h3>💪 Top Three </h3>
-        <table class="table table-striped table-inverse table-responsive">
+        <table class="table table-bordered table-dark table-striped table-inverse">
           <thead class="thead-inverse">
             <tr>
               <th>Champ</th>
               <th>Winrate</th>
             </tr>
-            </thead>
-            <tbody>
-              {% for champ in worst_three %}
-              <tr>
-                <td>{{champ}}</td>
-                <td>{{worst_three[champ]}}%</td>
-              </tr>
-              {% endfor %}
-            </tbody>
+          </thead>
+          <tbody>
+            {% for champ in worst_three %}
+            <tr>
+              <td>{{champ}}</td>
+              <td>{{worst_three[champ]}}%</td>
+            </tr>
+            {% endfor %}
+          </tbody>
         </table>
       </div>
     </div>
@@ -136,23 +134,32 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
-<!-- Matomo -->
-<script type="text/javascript">
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.syslinux.xyz"]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//aws.syslinux.xyz:8000/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
+  <!-- Matomo -->
+  <script type="text/javascript">
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+    _paq.push(["setCookieDomain", "*.syslinux.xyz"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+      var u = "//aws.syslinux.xyz:8000/";
+      _paq.push(['setTrackerUrl', u + 'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d = document,
+        g = d.createElement('script'),
+        s = d.getElementsByTagName('script')[0];
+      g.type = 'text/javascript';
+      g.async = true;
+      g.src = u + 'matomo.js';
+      s.parentNode.insertBefore(g, s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
+
+  <!-- My javascript  -->
+  <script src="../static/script.js"></script>
+  <script src="{{ url_for('static'), filename='script.js')}}"></script>
 </body>
 
 </html>

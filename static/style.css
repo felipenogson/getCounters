@@ -1,8 +1,71 @@
+body {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(43, 45, 66, 1) 49%);
+    color: #dfdfdf;
+}
+
 .btn {
     margin: 10px;
 }
 
+
 .row {
-    align-content: stretch;
+    justify-content: center;
+    align-content: center;
     width: 100%;
+}
+
+.jumbotron.titlebox {
+    width: 100%;
+    margin-top: 30px;
+    background: #D90429;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 2px 8px 0 rgba(239, 35, 60,3);
+}
+div::after {
+    content: "";
+    background: url(image.jpg);
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+.btn-search {
+    background-color: #8D99AE;
+    border: none;
+}
+.btn-search:hover {
+    background-color: #EF233C;
+    border: none;
+}
+
+.logo{
+    margin-bottom: 50px;
+}
+
+.suggestions {
+    background: #EDF2F4;
+    color: black;
+}
+
+.hl{
+    color: #ef233c;
+}
+
+li {
+    list-style-type: none;
+}
+li:hover{
+    background-color: #8D99AE;
+    color: white;
+
+}
+
+.champ {
+    width: 50px;
+    height: 50px;
+    border-radius: 25%;
+    margin-right: 10px;
 }
