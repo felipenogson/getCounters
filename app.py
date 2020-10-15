@@ -19,4 +19,5 @@ def summoner():
         info, top_three, worst_three  = find_counters(user['enemy'], user['line'], most_used)
         return render_template('index.html', user=user, info=info, top_three=top_three, worst_three=worst_three)
     elif request.method == 'GET':
-        return '<a href="http://aws.syslinux.xyz:5000">"http://aws.syslinux.xyz:5000"</a>'
+        # return '<a href="http://aws.syslinux.xyz:5000">"http://aws.syslinux.xyz:5000"</a>'
+        return redirect(url_for('index'))

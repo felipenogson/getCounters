@@ -16,14 +16,14 @@
 
   <!-- My css -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
-  <link rel="stylesheet" href="../static/style.css">
+  <!-- <link rel="stylesheet" href="../static/style.css"> -->
 </head>
 
 <body>
   <div class="container">
     <div class="row">
       <div class="jumbotron titlebox">
-        <h1 class="display-3 logo">Get Counters ⚔</h1>
+        <h1 class="display-3 logo">LoL ⚔ Get Counters</h1>
         <form action="summoner" method="post">
           <div class="form-row">
             <div class="col">
@@ -59,18 +59,19 @@
     <div class="row">
       <div class="col">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-secondary">{{user.summoner}}</button>
-          <button type="button" class="btn btn-secondary">{{user['enemy']}}</button>
-          <button type="button" class="btn btn-secondary">{{user['line']}}</button>
+          <a class="btn btn-secondary" href="https://www.leagueofgraphs.com/summoner/na/{{user.summoner}}" target="_new_window">{{user.summoner}}</a>
+          <a class="btn btn-secondary" href="https://www.leagueofgraphs.com/champions/builds/{{user['enemy']}}" target="_new_window">{{user['enemy']}}</a>
+          <a class="btn btn-secondary" href="https://www.leagueofgraphs.com/champions/builds/{{user['line']}}" target="_new_window">{{user['line']}}</a>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="results">
       <div class="col">
         <h3>🏋️‍♀️Your Champs</h3>
         <table class="table table-bordered table-dark table-striped table-inverse">
           <thead class="thead-inverse">
             <tr>
+              <th>Rank</th>
               <th>Champ</th>
               <th>Winrate</th>
             </tr>
@@ -78,7 +79,8 @@
           <tbody>
             {% for champ in info %}
             <tr>
-              <td>{{champ}}</td>
+              <td>{{loop.index}}</td>
+              <td class="champ-list">{{champ}}</td>
               <td>{{info[champ]}}%</td>
             </tr>
             {% endfor %}
@@ -90,6 +92,7 @@
         <table class="table table-bordered table-dark table-striped table-inverse">
           <thead class="thead-inverse">
             <tr>
+              <th>Rank</th>
               <th>Champ</th>
               <th>Winrate</th>
             </tr>
@@ -97,7 +100,8 @@
           <tbody>
             {% for champ in top_three %}
             <tr>
-              <td>{{champ}}</td>
+              <td>{{loop.index}}</td>
+              <td class="champ-list">{{champ}}</td>
               <td>{{top_three[champ]}}%</td>
             </tr>
             {% endfor %}
@@ -109,6 +113,7 @@
         <table class="table table-bordered table-dark table-striped table-inverse">
           <thead class="thead-inverse">
             <tr>
+              <th>Rank</th>
               <th>Champ</th>
               <th>Winrate</th>
             </tr>
@@ -116,7 +121,8 @@
           <tbody>
             {% for champ in worst_three %}
             <tr>
-              <td>{{champ}}</td>
+              <td>{{loop.index}}</td>
+              <td class="champ-list">{{champ}}</td>
               <td>{{worst_three[champ]}}%</td>
             </tr>
             {% endfor %}
@@ -138,31 +144,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
-  <!-- Matomo -->
-  <script type="text/javascript">
-    var _paq = window._paq = window._paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-    _paq.push(["setCookieDomain", "*.syslinux.xyz"]);
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function () {
-      var u = "//aws.syslinux.xyz:8000/";
-      _paq.push(['setTrackerUrl', u + 'matomo.php']);
-      _paq.push(['setSiteId', '1']);
-      var d = document,
-        g = d.createElement('script'),
-        s = d.getElementsByTagName('script')[0];
-      g.type = 'text/javascript';
-      g.async = true;
-      g.src = u + 'matomo.js';
-      s.parentNode.insertBefore(g, s);
-    })();
-  </script>
-  <!-- End Matomo Code -->
 
   <!-- My javascript  -->
-  <script src="../static/script.js"></script>
+  <!-- <script src="../static/script.js"></script> -->
   <script src="{{ url_for('static', filename='script.js')}}"></script>
 </body>
 

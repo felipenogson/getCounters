@@ -1,6 +1,6 @@
 body {
     background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(43, 45, 66, 1) 49%);
+    background: linear-gradient(10deg, rgba(43, 45, 66, 1) 10%, rgba(10, 10, 10, 1) 49%);
     color: #dfdfdf;
 }
 .container{
@@ -22,11 +22,10 @@ body {
     width: 100%;
     margin-top: 30px;
     background: #D90429;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 2px 8px 0 rgba(239, 35, 60,3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 2px 8px 0 rgba(66, 53, 54, 0.3);
 }
 div::after {
     content: "";
-    background: url(image.jpg);
     opacity: 0.5;
     top: 0;
     left: 0;
