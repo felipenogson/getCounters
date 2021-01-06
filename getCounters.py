@@ -21,11 +21,11 @@ def top_counters(soup):
             top_three[stat_champs[x]] = champ_winrates[x]
     return(top_three, worst_three)
 
-def grab_champs(summoner):
+def grab_champs(summoner, server):
     champ_plays = {}
     from requests_html import HTMLSession
     session = HTMLSession()
-    r = session.get('https://www.leagueofgraphs.com/summoner/champions/na/'+summoner+'#championsData-all-queues')
+    r = session.get('https://www.leagueofgraphs.com/summoner/champions/'+ server +'/'+summoner+'#championsData-all-queues')
     #print(r.text)
     soup = BeautifulSoup(r.text, 'lxml')
     soup.find

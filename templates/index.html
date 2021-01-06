@@ -30,10 +30,25 @@
               <input type="text" class="form-control form-control-lg" name="summoner" placeholder="Summoner">
             </div>
             <div class="col">
-              <input type="text" class="form-control form-control-lg" name="enemy" id="champion"
-                placeholder="Enemy Champion" autocomplete="off">
-              <ul class="suggestions" id="suggestions">
-              </ul>
+              <div class="form-group">
+                <select class="form-control form-control-lg" name="network" id="network" placeholder="Network">
+                  <option value="eune">EUNE</option>
+                  <option value="euw">EUW</option>
+                  <option value="na">NA</option>
+                  <option value="br">BR</option>
+                  <option value="lan">LAN</option>
+                  <option value="las">LAS</option>
+                  <option value="oce">OCE</option>
+                  <option value="kr">KR</option>
+                  <option value="ru">RU</option>
+                  <option value="tr">TR</option>
+                  <option value="jp">JP</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control form-control-lg" name="enemy" id="champion" placeholder="Enemy Champion" autocomplete="off">
+              <ul class="suggestions" id="suggestions"> </ul>
             </div>
             <div class="col">
               <div class="form-group">
@@ -62,6 +77,8 @@
         <div class="btn-group" role="group" aria-label="Basic example">
           <a class="btn btn-secondary" href="https://www.leagueofgraphs.com/summoner/na/{{user.summoner}}"
             target="_new_window">{{user.summoner}}</a>
+          <a class="btn btn-secondary" href="https://porofessor.gg/"
+            target="_new_window">{{user.network}}</a>
           <a class="btn btn-secondary" href="https://www.leagueofgraphs.com/champions/builds/{{user['enemy']}}"
             target="_new_window">{{user['enemy']}}</a>
           <a class="btn btn-secondary" href="https://www.leagueofgraphs.com/champions/builds/{{user['line']}}"
