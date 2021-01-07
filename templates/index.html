@@ -27,14 +27,11 @@
         <form action="summoner" method="post">
           <div class="form-row">
             <div class="col">
-              <input type="text" class="form-control form-control-lg" name="summoner" placeholder="Summoner">
-            </div>
-            <div class="col">
               <div class="form-group">
                 <select class="form-control form-control-lg" name="network" id="network" placeholder="Network">
+                  <option value="na">NA</option>
                   <option value="eune">EUNE</option>
                   <option value="euw">EUW</option>
-                  <option value="na">NA</option>
                   <option value="br">BR</option>
                   <option value="lan">LAN</option>
                   <option value="las">LAS</option>
@@ -45,6 +42,9 @@
                   <option value="jp">JP</option>
                 </select>
               </div>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control form-control-lg" name="summoner" placeholder="Summoner">
             </div>
             <div class="col">
               <input type="text" class="form-control form-control-lg" name="enemy" id="champion" placeholder="Enemy Champion" autocomplete="off">
@@ -170,31 +170,16 @@
   <!-- <script src="../static/script.js"></script> -->
   <script src="{{ url_for('static', filename='script.js')}}"></script>
 
-  <!-- Matomo -->
-  <script type="text/javascript">
-    var _paq = window._paq = window._paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-    _paq.push(["setCookieDomain", "*.syslinux.xyz"]);
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function () {
-      var u = "//aws.syslinux.xyz:8000/";
-      _paq.push(['setTrackerUrl', u + 'matomo.php']);
-      _paq.push(['setSiteId', '1']);
-      var d = document,
-        g = d.createElement('script'),
-        s = d.getElementsByTagName('script')[0];
-      g.type = 'text/javascript';
-      g.async = true;
-      g.src = u + 'matomo.js';
-      s.parentNode.insertBefore(g, s);
-    })();
+  <!-- Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5L4C21SPH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-L5L4C21SPH');
   </script>
-  <noscript>
-    <p><img src="//aws.syslinux.xyz:8000/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p>
-  </noscript>
-  <!-- End Matomo Code -->
 
 </body>
 
