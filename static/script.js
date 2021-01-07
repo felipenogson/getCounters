@@ -44,10 +44,11 @@ function selectHero(e) {
 }
 
 // Put icons in the results tables
-function showIconResults() {
+function showIconResults(){
     champList = [...document.getElementsByClassName('champ-list')];
     champList.forEach( td => { 
-        champ = champions.filter( el => el.id == td.textContent)[0]; 
+        champ = champions.filter( el => el.id == td.textContent.replace(/\s/g,''))[0]; 
+        console.log(champ);
         td.innerHTML = `<td class="champ-list"><a href="https://www.leagueofgraphs.com/champions/builds/${champ.id}" target="_new_window"><img class="champ" src="${champ.icon}">${champ.name}<a></td>`;
     })
 }
